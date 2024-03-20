@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fffce4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <top>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="200.0">
+               <image>
+                  <Image url="@../../../../../Desktop/image.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="190.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Care4You Pediatric Center! " />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="270.0" layoutY="6.0" text="Username" />
+            <Label layoutX="272.0" layoutY="67.0" text="Password" />
+            <TextField fx:id="username" layoutX="218.0" layoutY="32.0" promptText="Username" />
+            <TextField fx:id="password" layoutX="218.0" layoutY="94.0" promptText="Password" />
+            <Button fx:id="button" layoutX="271.0" layoutY="143.0" mnemonicParsing="false" onAction="#login" text="Sign In" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
