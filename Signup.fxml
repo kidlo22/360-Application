@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #fffce4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <left>
+      <AnchorPane prefHeight="604.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="119.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Information" />
+            <Text layoutX="462.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Information" />
+            <TextField fx:id="newUsername" layoutX="115.0" layoutY="215.0" />
+            <Text layoutX="39.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+            <Text layoutX="41.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <TextField fx:id="newPassword" layoutX="115.0" layoutY="250.0" prefHeight="27.0" />
+            <Text layoutX="6.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password" />
+            <TextField fx:id="confirmPassword" layoutX="115.0" layoutY="287.0" />
+            <Text layoutX="383.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name" />
+            <Text layoutX="383.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name" />
+            <Text layoutX="368.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" />
+            <Text layoutX="362.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" />
+            <Text layoutX="397.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <Text layoutX="368.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID" />
+            <TextField fx:id="firstName" layoutX="455.0" layoutY="214.0" />
+            <TextField fx:id="lastName" layoutX="455.0" layoutY="250.0" />
+            <TextField fx:id="dob" layoutX="455.0" layoutY="287.0" />
+            <TextField fx:id="phoneNum" layoutX="455.0" layoutY="327.0" />
+            <TextField fx:id="email" layoutX="455.0" layoutY="367.0" />
+            <TextField fx:id="insuranceID" layoutX="455.0" layoutY="405.0" />
+            <Button fx:id="confirmButton" layoutX="484.0" layoutY="478.0" mnemonicParsing="false" onAction="#createNewUser" text="Confirm sign up" />
+            <Text layoutX="99.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="151.8896484375" />
+            <Button fx:id="homeButtton" layoutX="147.0" layoutY="478.0" mnemonicParsing="false" onAction="#returnToHome" text="Sign in" />
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/image.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
