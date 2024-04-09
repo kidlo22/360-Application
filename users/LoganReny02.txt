@@ -1,9 +1,0 @@
-Username: kidlo22
-Password: TomBrady12!
-First Name: Logan
-Last Name: Reny
-Date of birth: 07/25/2002
-Email: lreny@asu.edu
-Phone Number: 4807660501
-Insurance ID: 12345
-Patient ID:  LoganReny02

@@ -12,9 +12,13 @@ public class FileSystemManager {
 	private String dir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/Users/";
 	private String messageDir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/messages/";
 	
-	public void addUserToSystem(Patient patient) {
+	public boolean addUserToSystem(Patient patient) {
 		String filePath = dir + patient.getPaitentID() + ".txt";
 		File myObj = new File(filePath);
+		
+		if (myObj.exists()) {
+			return false;
+		}
 		
 		try {
 			// creates file in the specified path and then adds patient data to file
@@ -40,10 +44,14 @@ public class FileSystemManager {
 
 			myWriter.close();
 			
+			return true;
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return false;
 
 	}
 	

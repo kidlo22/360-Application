@@ -1,6 +1,7 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -33,6 +34,13 @@ public class Controller {
 	private TextField insuranceID;
 	@FXML
 	private TextField messageField;
+	@FXML 
+	private Label errorLabel;
+	@FXML 
+	private Label emptyFieldLabel;
+	@FXML 
+	private Label accountExistsLabel;
+
 
 	Main m = new Main();
 	FileSystemManager fileManager = new FileSystemManager();
@@ -55,7 +63,8 @@ public class Controller {
 			m.changeScene("Nurseview.fxml");
 		}
 		else {
-			System.out.println("Wrong");
+			errorLabel.setVisible(true);
+			
 		}
 	}
 	public void signup(ActionEvent e) {
@@ -67,9 +76,18 @@ public class Controller {
 	}
 	
 	public void createNewUser(ActionEvent e) {
+		if (newUsername.getText().toString().isEmpty() ||newPassword.getText().toString().isEmpty() || firstName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty() || dob.getText().toString().isEmpty() || phoneNum.getText().toString().isEmpty() || email.getText().toString().isEmpty() || insuranceID.getText().isEmpty())
+		{
+			emptyFieldLabel.setVisible(true);
+			return;
+		}
 		Patient patient = new Patient(newUsername.getText().toString(),newPassword.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),dob.getText().toString(),phoneNum.getText().toString(),email.getText().toString(),Integer.parseInt(insuranceID.getText()));
-		fileManager.addUserToSystem(patient);
-		m.changeScene("Home.fxml");
+		boolean addedPatient = fileManager.addUserToSystem(patient);
+		if (addedPatient) {
+			m.changeScene("Home.fxml");
+		}
+		accountExistsLabel.setVisible(true);
+		
 	}
 	
 	public void sendMessage(ActionEvent e) {
