@@ -10,6 +10,7 @@ import java.io.IOException;
 public class FileSystemManager {
 	
 	private String dir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/Users/";
+	private String messageDir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/messages/";
 	
 	public void addUserToSystem(Patient patient) {
 		String filePath = dir + patient.getPaitentID() + ".txt";
@@ -17,7 +18,6 @@ public class FileSystemManager {
 		
 		try {
 			// creates file in the specified path and then adds patient data to file
-			
 			myObj.createNewFile();
 			FileWriter myWriter = new FileWriter(dir + patient.getPaitentID() + ".txt");
 			myWriter.write("Username: " + patient.getUserName());
@@ -76,6 +76,11 @@ public class FileSystemManager {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public void addMessageToSystem(Message message) {
+		System.out.println(System.currentTimeMillis());
+		
 	}
 
 }

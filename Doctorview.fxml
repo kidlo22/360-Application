@@ -1,13 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #fffce4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <Text layoutX="267.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor View" />
+      <Label layoutX="604.0" layoutY="6.0" text="Doctor">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="44.0" layoutY="150.0" prefHeight="243.0" prefWidth="256.0" style="-fx-border-color: black;">
+         <children>
+            <TextField fx:id="patientHeight" layoutX="112.0" layoutY="34.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientWeight" layoutX="112.0" layoutY="79.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientTemperature" layoutX="112.0" layoutY="124.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientSysBloodPressure" layoutX="112.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientDiaBloodPressure" layoutX="186.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
+            <Label layoutX="14.0" layoutY="38.0" text="Height:" />
+            <Label layoutX="14.0" layoutY="83.0" text="Weight:" />
+            <Label layoutX="14.0" layoutY="128.0" text="Body Temp:" />
+            <Label layoutX="14.0" layoutY="173.0" text="Blood Pressure" />
+            <Label layoutX="176.0" layoutY="38.0" text="ft in" />
+            <Label layoutX="176.0" layoutY="83.0" prefHeight="17.0" prefWidth="21.0" text="lbs" />
+            <Label layoutX="131.0" layoutY="153.0" text="SYS" />
+            <Label layoutX="205.0" layoutY="153.0" text="DIA" />
+            <Label layoutX="175.0" layoutY="171.0" text="/" />
+            <Label layoutX="14.0" layoutY="7.0" text="Patient Vitals">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="patientVitalsSaveButton" layoutX="201.0" layoutY="210.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Save" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="signOutButton" layoutX="1198.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Sign Out" onAction="#returnToHome">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="44.0" layoutY="422.0" prefHeight="234.0" prefWidth="256.0" style="-fx-border-color: black;">
+         <children>
+            <Label layoutX="71.0" layoutY="14.0" text="Immunization Record" />
+            <TextArea fx:id="patientImmunizationRecordText" editable="false" layoutX="6.0" layoutY="37.0" prefHeight="180.0" prefWidth="245.0" />
+         </children>
+      </AnchorPane>
+      <ChoiceBox fx:id="doctorVisitSelectDropDown" layoutX="343.0" layoutY="87.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" />
+      <AnchorPane layoutX="343.0" layoutY="150.0" prefHeight="243.0" prefWidth="480.0" style="-fx-border-color: black;">
+         <children>
+            <TextArea fx:id="patientVisitHealthIssue" editable="false" layoutX="14.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
+            <TextArea fx:id="patientVisitPrescription" editable="false" layoutX="258.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
+            <Label layoutX="14.0" layoutY="15.0" text="Health Issues" />
+            <Label layoutX="258.0" layoutY="15.0" text="Prescriptions" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="343.0" layoutY="422.0" prefHeight="234.0" prefWidth="480.0" style="-fx-border-color: black;">
+         <children>
+            <Label layoutX="18.0" layoutY="34.0" text="Allergies" />
+            <Label layoutX="18.0" layoutY="98.0" text="Health Concerns" />
+            <Label layoutX="18.0" layoutY="157.0" text="Pharmacy ID" />
+            <Label layoutX="18.0" layoutY="191.0" text="Insurance ID" />
+            <TextField fx:id="patientPharmacyID" editable="false" layoutX="161.0" layoutY="153.0" />
+            <TextField fx:id="patientInsuranceID" editable="false" layoutX="161.0" layoutY="187.0" />
+            <TextArea fx:id="patientAllergies" editable="false" layoutX="161.0" layoutY="17.0" prefHeight="51.0" prefWidth="304.0" />
+            <TextArea fx:id="patientHealthConcerns" editable="false" layoutX="161.0" layoutY="81.0" prefHeight="51.0" prefWidth="304.0" />
+         </children>
+      </AnchorPane>
+      <BorderPane layoutX="845.0" layoutY="150.0" prefHeight="372.0" prefWidth="200.0" style="-fx-background-color: grey;">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="79.0" style="-fx-border-color: black; -fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField promptText="Type your message" />
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <Label text="Contact Patient" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 4;" text="Send " BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane layoutX="1066.0" layoutY="150.0" prefHeight="234.0" prefWidth="200.0" style="-fx-border-color: black;">
+         <top>
+            <Label text="Recommendations" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <TextArea fx:id="doctorVisitRecommendations" prefHeight="200.0" prefWidth="200.0" promptText="Enter Recommendations here" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Button fx:id="doctorRecommendationsSaveButton" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Save" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <ImageView fitHeight="123.0" fitWidth="159.0" layoutX="44.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
-</Pane>
+</AnchorPane>

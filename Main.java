@@ -21,7 +21,7 @@ public class Main extends Application {
 			primaryStage.setResizable(false);
 			Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 			primaryStage.setTitle("Pediatric System");
-			primaryStage.setScene(new Scene(root, 700, 600));
+			primaryStage.setScene(new Scene(root, 1280, 720));
 			primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

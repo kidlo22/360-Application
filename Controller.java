@@ -31,7 +31,9 @@ public class Controller {
 	private TextField email;
 	@FXML
 	private TextField insuranceID;
-	
+	@FXML
+	private TextField messageField;
+
 	Main m = new Main();
 	FileSystemManager fileManager = new FileSystemManager();
 	
@@ -67,6 +69,12 @@ public class Controller {
 	public void createNewUser(ActionEvent e) {
 		Patient patient = new Patient(newUsername.getText().toString(),newPassword.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),dob.getText().toString(),phoneNum.getText().toString(),email.getText().toString(),Integer.parseInt(insuranceID.getText()));
 		fileManager.addUserToSystem(patient);
+		m.changeScene("Home.fxml");
+	}
+	
+	public void sendMessage(ActionEvent e) {
+		Message message = new Message(messageField.getText().toString());
+		fileManager.addMessageToSystem(message);
 	}
 
 }
