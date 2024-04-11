@@ -1,6 +1,9 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -8,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -56,8 +60,9 @@ public class DoctorViewController {
     private TextField visitDateField;
     @FXML
     private TextField retrievePatientVisitTextField;
-    
-    
+    @FXML
+    private Button contactButton;
+   
     
     @FXML 
 	private Label patientNameLabel;
@@ -66,14 +71,15 @@ public class DoctorViewController {
     
     private static String patientIDDoctor;
     
+	private static String currentUserRole;
+	private static String currentUserId;
+    
     
     // constructor
     
     public DoctorViewController() {
         // Default constructor
     }
-    
-    
     
     Main m = new Main();
 	FileSystemManager fileManager = new FileSystemManager();
@@ -228,6 +234,36 @@ public class DoctorViewController {
         }
 		}
 		
+	}
+	
+	
+	public String getCurrentUserRole() {
+    	return currentUserRole;
+	}
+
+	public String getCurrentUserId() {
+	    	return currentUserId;
+		}
+	
+	public void launchMessagingSystem(ActionEvent e) {
+	    try {
+	        // Assuming a method or means to get the logged-in user's role and ID
+	        String userId = patientIDDoctor;
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MessagingSystem.fxml"));
+	            Parent root = loader.load();
+	
+	            MessagingSystemController messagingController = loader.getController();
+	            messagingController.initData("Doctor1011",patientIDDoctor);
+	            //System.out.println(userId);
+	            messagingController.loadMessages("Doctor");
+	            Stage stage = new Stage();
+	            stage.setScene(new Scene(root));
+	            stage.setTitle("Messaging System");
+	            stage.show();
+	    } catch (Exception e1) {
+	    	
+	        e1.printStackTrace();
+	    }
 	}
 	
 	

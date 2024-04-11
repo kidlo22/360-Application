@@ -1,0 +1,10 @@
+Username: testUser
+Password: Password
+First Name: Logan
+Last Name: Reny
+Date of birth: 07252002
+Email: lreny@asu.edu
+Phone Number: 324234324
+Insurance ID: 32432
+Pharmacy ID: 23342
+Patient ID: testuser02

@@ -1,9 +1,11 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,6 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -54,6 +59,8 @@ public class PatientViewController {
     
     @FXML
     private Text PatientLabel;
+    @FXML
+    private Button sendButton;
     
     private static String patientID;
     
@@ -173,8 +180,6 @@ public class PatientViewController {
        
     public void getPatientSummary(ActionEvent e) {
     	String fileName = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/users/" + patientID + "Visit" + visitDate.getText().trim() +".txt"; // Specify the file name
-        
-    	
     	
         File file = new File(fileName);
 
@@ -203,9 +208,29 @@ public class PatientViewController {
         	System.out.println("file not found");
         }
         
-        
-        
     }
+    
+	public void launchMessagingSystem(ActionEvent e) {
+	    try {
+	        // Assuming a method or means to get the logged-in user's role and ID
+	        String userId = patientID;
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MessagingSystem.fxml"));
+	        Parent root = loader.load();
+	
+	            MessagingSystemController messagingController = loader.getController();
+	            messagingController.initData(userId, userId);
+	            messagingController.loadMessages(userId);
+	
+	            Stage stage = new Stage();
+	            stage.setScene(new Scene(root));
+	            stage.setTitle("Messaging System");
+	            stage.show();
+	    } catch (Exception e1) {
+	    	
+	        e1.printStackTrace();
+	    }
+	}
+    
     
     public void signOut(ActionEvent e) {
 		m.changeScene("Home.fxml");

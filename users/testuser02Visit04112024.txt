@@ -1,0 +1,14 @@
+Patient ID: null
+Height: 2432
+Weight: 2342
+Body Temperature: 23423
+Blood Pressure (Sys): 23432
+Blood Pressure (Dia): 23423
+Immunization Record: none
+Health Issues: none
+Prescriptions: none
+Allergies: none
+Health Concerns: none
+Pharmacy ID: 23432
+Insurance ID: 2343
+Recommendation: 

@@ -40,16 +40,25 @@ public class Controller {
 	private TextField email;
 	@FXML
 	private TextField insuranceID;
-	
-	
-	
 	@FXML 
 	private Label patientNameLabel;
+	@FXML
+	private TextField messageField;
+	@FXML 
+	private Label errorLabel;
+	@FXML 
+	private Label emptyFieldLabel;
+	@FXML 
+	private Label accountExistsLabel;
 	
 	private String thisPatientID;
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	// Attributes to store the current user's role and ID
+	private static String currentUserRole;
+	private static String currentUserId;
 	
 	Main m = new Main();
 	FileSystemManager fileManager = new FileSystemManager();
@@ -81,10 +90,10 @@ public class Controller {
 			m.changeScene("patientID.fxml");
 		}
 		else if (username.getText().toString().equals("Nurse") && password.getText().toString().equals("Password") && id.getText().toString().equals("Nurse1011")) {		
-			m.changeScene("Nurseview.fxml");
+			m.changeScene("nurseID.fxml");
 		}
 		else {
-			System.out.println("Wrong");
+			errorLabel.setVisible(true);
 		}
 	}
 	
@@ -97,36 +106,29 @@ public class Controller {
 	}
 	
 	public void createNewUser(ActionEvent e) {
+		if (newUsername.getText().toString().isEmpty() ||newPassword.getText().toString().isEmpty() || firstName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty() || dob.getText().toString().isEmpty() || phoneNum.getText().toString().isEmpty() || email.getText().toString().isEmpty() || insuranceID.getText().isEmpty())
+		{
+			emptyFieldLabel.setVisible(true);
+			return;
+		}
 		Patient patient = new Patient(newUsername.getText().toString(),newPassword.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),dob.getText().toString(),phoneNum.getText().toString(),email.getText().toString(),Integer.parseInt(insuranceID.getText()));
-		fileManager.addUserToSystem(patient);
+		boolean addedPatient = fileManager.addUserToSystem(patient);
+		if (addedPatient) {
+			m.changeScene("Home.fxml");
+		}
+		accountExistsLabel.setVisible(true);
 	}	
 	public void sendMessage(ActionEvent e) {
 		Message message = new Message(messageField.getText().toString());
 		fileManager.addMessageToSystem(message);
 	}
 
+	public String getCurrentUserRole() {
+        	return currentUserRole;
+    	}
+
+	public String getCurrentUserId() {
+        	return currentUserId;
+    	}
 	// Method to launch the messaging system
-	public void launchMessagingSystem() {
-	    try {
-	        // Assuming a method or means to get the logged-in user's role and ID
-	        String role = getCurrentUserRole();
-	        String userId = getCurrentUserId();
-	
-	        if (role.equals("Patient")) {
-	            FXMLLoader loader = new FXMLLoader(getClass().getResource("MessagingSystem.fxml"));
-	            Parent root = loader.load();
-	
-	            MessagingSystemController messagingController = loader.getController();
-	            messagingController.initData(userId);
-	
-	            Stage stage = new Stage();
-	            stage.setScene(new Scene(root));
-	            stage.setTitle("Messaging System");
-	            stage.show();
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}
-	
 }

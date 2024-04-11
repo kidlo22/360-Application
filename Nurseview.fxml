@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -11,8 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #fffce4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #fffce4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NurseViewController">
    <children>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="604.0" layoutY="6.0" text="Nurse">
          <font>
             <Font size="24.0" />
@@ -23,8 +29,8 @@
             <TextField fx:id="patientHeight" layoutX="112.0" layoutY="34.0" prefHeight="25.0" prefWidth="57.0" />
             <TextField fx:id="patientWeight" layoutX="112.0" layoutY="79.0" prefHeight="25.0" prefWidth="57.0" />
             <TextField fx:id="patientTemperature" layoutX="112.0" layoutY="124.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="patientSysBloodPressure" layoutX="112.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="patientDiaBloodPressure" layoutX="186.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientSysBP" layoutX="112.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
+            <TextField fx:id="patientDiaBP" layoutX="186.0" layoutY="169.0" prefHeight="25.0" prefWidth="57.0" />
             <Label layoutX="14.0" layoutY="38.0" text="Height:" />
             <Label layoutX="14.0" layoutY="83.0" text="Weight:" />
             <Label layoutX="14.0" layoutY="128.0" text="Body Temp:" />
@@ -39,10 +45,9 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="patientVitalsSaveButton" layoutX="201.0" layoutY="210.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Save" />
          </children>
       </AnchorPane>
-      <Button fx:id="signOutButton" layoutX="1198.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Sign Out" onAction="#returnToHome">
+      <Button fx:id="signOutButton" layoutX="1198.0" layoutY="10.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" text="Sign Out">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -53,11 +58,11 @@
             <TextArea fx:id="patientImmunizationRecordText" editable="false" layoutX="6.0" layoutY="37.0" prefHeight="180.0" prefWidth="245.0" />
          </children>
       </AnchorPane>
-      <ChoiceBox fx:id="nurseVisitSelectDropDown" layoutX="343.0" layoutY="87.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 7;" />
+      <TextField fx:id="retrievePatientVisitTextField" layoutX="434.0" layoutY="84.0" onAction="#retrievePatientData" prefHeight="25.0" prefWidth="159.0" promptText="Enter Date in MMDDYYYY" />
       <AnchorPane layoutX="343.0" layoutY="150.0" prefHeight="243.0" prefWidth="480.0" style="-fx-border-color: black;">
          <children>
-            <TextArea fx:id="patientVisitHealthIssue" editable="false" layoutX="14.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
-            <TextArea fx:id="patientVisitPrescription" editable="false" layoutX="258.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
+            <TextArea fx:id="patientHealthIssue" editable="false" layoutX="14.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
+            <TextArea fx:id="patientPrescription" editable="false" layoutX="258.0" layoutY="49.0" prefHeight="180.0" prefWidth="210.0" />
             <Label layoutX="14.0" layoutY="15.0" text="Health Issues" />
             <Label layoutX="258.0" layoutY="15.0" text="Prescriptions" />
          </children>
@@ -86,9 +91,8 @@
             <Label text="Contact Patient" BorderPane.alignment="CENTER" />
          </top>
          <bottom>
-            <Button mnemonicParsing="false" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 4;" text="Send " BorderPane.alignment="CENTER" />
+            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#launchMessagingSystem" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 4;" text="Send " BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true"/>
    </children>
 </AnchorPane>

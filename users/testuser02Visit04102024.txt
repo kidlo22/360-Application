@@ -1,0 +1,14 @@
+Patient ID: null
+Height: 5'11
+Weight: 190
+Body Temperature: 29
+Blood Pressure (Sys): 234
+Blood Pressure (Dia): 34
+Immunization Record: None
+Health Issues: None
+Prescriptions: None
+Allergies: None
+Health Concerns: None
+Pharmacy ID: 23443
+Insurance ID: 234342
+Recommendation: None

@@ -6,14 +6,27 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileSystemManager {
 	
 	private String dir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/users/";
+	private String messageDir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/messages/";
+	
 	
 	public boolean addUserToSystem(Patient patient) {
 		String filePath = dir + patient.getPaitentID() + ".txt";
 		File myObj = new File(filePath);
+		
+		if (myObj.exists()) {
+		    return false;
+		} 
 		
 		try {
 			// creates file in the specified path and then adds patient data to file
@@ -118,5 +131,47 @@ public class FileSystemManager {
 		PatientData patientData = new PatientData(patientID, "", "", "", "", "", "", "", "", "", "", "", "", "");
 		return patientData;
 	}
+	
+	public void addMessageToSystem(Message message) {
+		System.out.println(System.currentTimeMillis());
+		
+	}
 
+	public boolean storeMessage(String senderId, String recipientId, String message) {
+		Path filePath = Paths.get(messageDir, senderId + "_to_" + recipientId + ".txt");
+	    try {
+		    	Files.createDirectories(filePath.getParent());
+		        Files.write(filePath, (message + "\n---\n").getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+		        return true;
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+    	}
+
+    public List<String> retrieveMessages(String senderId, String recipientId) {
+    	Path filePath = Paths.get(messageDir, senderId + "_to_" + recipientId + ".txt");
+    	System.out.println(filePath);
+	    List<String> messages = new ArrayList<>();
+	    if (!Files.exists(filePath)) {
+	    	System.out.println("No messages");
+	    	return messages; // No messages to retrieve
+	    }
+	
+	    try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+	    	StringBuilder message = new StringBuilder();
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	        	if ("---".equals(line)) { // Message delimiter
+	        		messages.add(message.toString());
+	                message = new StringBuilder(); // Reset for the next message
+	        	} else {
+	        		message.append(line).append("\n");
+	            }
+	        }
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	      }
+	    return messages;
+    }
 }

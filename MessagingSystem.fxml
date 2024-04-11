@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MessagingSystemController">
+    <VBox spacing="10" AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20">
+        <ListView fx:id="messageList" VBox.vgrow="ALWAYS" />
+        <TextArea fx:id="composeMessage" promptText="Compose a message..." />
+        <TextField fx:id="recipientIdField" promptText="Recipient ID" /> 
+        <Button text="Send" onAction="#onSendMessage" maxWidth="Infinity" />
+    </VBox>
+</AnchorPane>
+
