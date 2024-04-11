@@ -9,19 +9,15 @@ import java.io.IOException;
 
 public class FileSystemManager {
 	
-	private String dir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/Users/";
-	private String messageDir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/messages/";
+	private String dir = "/Users/loganreny/eclipse-workspace/CSE 360/Prototype/src/application/users/";
 	
 	public boolean addUserToSystem(Patient patient) {
 		String filePath = dir + patient.getPaitentID() + ".txt";
 		File myObj = new File(filePath);
 		
-		if (myObj.exists()) {
-			return false;
-		}
-		
 		try {
 			// creates file in the specified path and then adds patient data to file
+			
 			myObj.createNewFile();
 			FileWriter myWriter = new FileWriter(dir + patient.getPaitentID() + ".txt");
 			myWriter.write("Username: " + patient.getUserName());
@@ -41,9 +37,8 @@ public class FileSystemManager {
 			myWriter.write("Insurance ID: " + patient.getInsuranceID());
 			myWriter.write(System.lineSeparator());
 			myWriter.write("Patient ID:  " + patient.getPaitentID());
-
-			myWriter.close();
 			
+			myWriter.close();
 			return true;
 			
 		} catch (IOException e) {
@@ -86,9 +81,42 @@ public class FileSystemManager {
 		return false;
 	}
 	
-	public void addMessageToSystem(Message message) {
-		System.out.println(System.currentTimeMillis());
+	public String getPatientName (String patientID) {
+		File patientFile = new File(dir + patientID + ".txt");
 		
+		try {
+			String line;
+            String firstName = null;
+            String lastName = null;
+			BufferedReader br = new BufferedReader(new FileReader(patientFile));
+			
+			while ((line = br.readLine()) != null) {
+                if (line.startsWith("First Name:")) {
+                    firstName = line.substring("First Name:".length()).trim();
+                } else if (line.startsWith("Last Name:")) {
+                    lastName = line.substring("Last Name:".length()).trim();
+                }
+            }
+			
+			return firstName + " " + lastName;
+				
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return patientID;
+		}
+		
+	}
+
+	public boolean patientFileExists(String patientID) {
+		String filePath = dir + patientID + ".txt";
+	    File file = new File(filePath);
+	    return file.exists();
+	}
+
+	public PatientData loadPatientData(String patientID) {
+		PatientData patientData = new PatientData(patientID, "", "", "", "", "", "", "", "", "", "", "", "", "");
+		return patientData;
 	}
 
 }

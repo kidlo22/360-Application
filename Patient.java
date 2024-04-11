@@ -12,6 +12,11 @@ public class Patient {
 	private int insuranceID;
 	private String patientID;
 	
+	public Patient() {
+
+		   
+	}
+	
 	public Patient(String username, String password, String firstname, String lastname, String dateofbirth, String phonenumber, String email, int insuranceid) {
 		this.userName = username;
 		this.passWord = password;
@@ -60,6 +65,10 @@ public class Patient {
 	
 	public void setInsuranceID(int insuranceid) {
 		this.insuranceID = insuranceid;
+	}
+	
+	public void setPatientID(String patientID) {
+		this.patientID = patientID;
 	}
 	
 	public String getUserName() {

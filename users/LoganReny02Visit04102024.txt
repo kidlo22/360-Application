@@ -1,0 +1,14 @@
+Patient ID: null
+Height: 90
+Weight: 111
+Body Temperature: 123
+Blood Pressure (Sys): 123
+Blood Pressure (Dia): 232
+Immunization Record: your good
+Health Issues: your good
+Prescriptions: your good
+Allergies: none
+Health Concerns: none
+Pharmacy ID: 1213
+Insurance ID: 234324
+Recommendation: your good

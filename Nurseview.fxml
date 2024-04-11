@@ -89,6 +89,6 @@
             <Button mnemonicParsing="false" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 4;" text="Send " BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" image="@Care4YouLogo.png/>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true"/>
    </children>
 </AnchorPane>
